@@ -1,0 +1,27 @@
+
+# CLI tool, only in development environment.
+# https://goframe.org/pages/viewpage.action?pageId=3673173
+gfcli:
+  gen:
+    dao:
+      - link: "mysql:root:123456@tcp(127.0.0.1:3306)/flb_2shou?loc=Local&parseTime=true"
+        tables: ""
+        removePrefix: ""
+        descriptionTag: true
+        noModelComment: true
+        group: "default"
+        overwriteDao: true
+  docker:
+    build: "-a amd64 -s linux -p temp -ew"
+    tagPrefixes:
+      - my.image.pub/my-app
+  build:
+    name: "bot-2shou"
+    arch: "amd64"
+    system: "linux,windows"
+    #system: "linux,darwin,windows"
+    mod: "none"
+    packSrc: "resource,manifest"
+    version: "v1.0.0"
+    path: "../bin"
+    extra: ""
